@@ -187,8 +187,8 @@ python3 evaluate.py --mode both
 
 The evaluation writes:
 
-- [results/evaluation_summary.csv](/Users/mac/Downloads/RL/Generative AI FP/results/evaluation_summary.csv)
-- [results/case_results.csv](/Users/mac/Downloads/RL/Generative AI FP/results/case_results.csv)
+- [results/evaluation_summary.csv](results/evaluation_summary.csv)
+- [results/case_results.csv](results/case_results.csv)
 
 ## Repository Structure
 
