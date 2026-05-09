@@ -178,7 +178,3 @@ streamlit run app.py
 ├── requirements.txt
 └── slides.md
 ```
-
-## Presentation Notes
-
-Use [slides.md](/Users/mac/Downloads/RL/Generative AI FP/slides.md) as a starting point for a 2-3 minute presentation.
