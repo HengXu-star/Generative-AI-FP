@@ -175,6 +175,5 @@ streamlit run app.py
 ├── results/
 │   ├── case_results.csv
 │   └── evaluation_summary.csv
-├── requirements.txt
-└── slides.md
+└── requirements.txt
 ```
