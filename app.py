@@ -41,7 +41,7 @@ input_text = st.text_area(
     placeholder="Paste an applicant email or application note here.",
 )
 
-model = st.text_input("OpenAI model", value="gpt-4.1-mini")
+model = st.text_input("Groq model", value="llama-3.1-8b-instant")
 run_button = st.button("Extract fields", type="primary")
 
 
@@ -65,7 +65,7 @@ if run_button:
         with col2:
             try:
                 llm_result = extract_with_llm(input_text, model=model)
-                render_result("LLM Extractor", llm_result, f"OpenAI model: {model}")
+                render_result("LLM Extractor", llm_result, f"Groq model: {model}")
             except LLMExtractorError as exc:
                 st.subheader("LLM Extractor")
                 st.error(str(exc))

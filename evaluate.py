@@ -39,10 +39,16 @@ def score_case(prediction: Dict[str, object], truth: Dict[str, object]) -> Dict[
     )
 
     case_complete = 1.0 if field_correct == len(FIELDS) and missing_match == 1.0 else 0.0
+    triage_success = (
+        1.0
+        if (field_correct / len(FIELDS)) >= 0.70 and missing_match >= 0.80
+        else 0.0
+    )
     return {
         "field_accuracy": field_correct / len(FIELDS),
         "missing_field_accuracy": missing_match,
         "case_completion_accuracy": case_complete,
+        "triage_success": triage_success,
     }
 
 
@@ -54,6 +60,7 @@ def aggregate_scores(rows: Iterable[Dict[str, object]]) -> Dict[str, float]:
             "field_accuracy": 0.0,
             "missing_field_accuracy": 0.0,
             "case_completion_accuracy": 0.0,
+            "triage_success_rate": 0.0,
         }
 
     return {
@@ -61,6 +68,7 @@ def aggregate_scores(rows: Iterable[Dict[str, object]]) -> Dict[str, float]:
         "field_accuracy": sum(row["field_accuracy"] for row in rows) / len(rows),
         "missing_field_accuracy": sum(row["missing_field_accuracy"] for row in rows) / len(rows),
         "case_completion_accuracy": sum(row["case_completion_accuracy"] for row in rows) / len(rows),
+        "triage_success_rate": sum(row["triage_success"] for row in rows) / len(rows),
     }
 
 
@@ -100,6 +108,7 @@ def write_case_results(rows: List[Dict[str, object]]) -> None:
                 "field_accuracy",
                 "missing_field_accuracy",
                 "case_completion_accuracy",
+                "triage_success",
             ],
         )
         writer.writeheader()
@@ -123,6 +132,7 @@ def write_summary(rows: List[Dict[str, object]]) -> None:
                 "field_accuracy",
                 "missing_field_accuracy",
                 "case_completion_accuracy",
+                "triage_success_rate",
             ],
         )
         writer.writeheader()
@@ -139,8 +149,8 @@ def main() -> None:
     )
     parser.add_argument(
         "--model",
-        default="gpt-4.1-mini",
-        help="OpenAI model for the LLM evaluation.",
+        default="llama-3.1-8b-instant",
+        help="Groq model for the LLM evaluation.",
     )
     args = parser.parse_args()
 
@@ -166,7 +176,8 @@ def main() -> None:
             f"cases={summary['cases']}, "
             f"field_accuracy={summary['field_accuracy']:.3f}, "
             f"missing_field_accuracy={summary['missing_field_accuracy']:.3f}, "
-            f"case_completion_accuracy={summary['case_completion_accuracy']:.3f}"
+            f"case_completion_accuracy={summary['case_completion_accuracy']:.3f}, "
+            f"triage_success_rate={summary['triage_success_rate']:.3f}"
         )
 
 

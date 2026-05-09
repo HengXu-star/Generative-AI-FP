@@ -20,7 +20,7 @@ The project includes:
 
 - A `Streamlit` app for interactive extraction
 - A rule-based baseline extractor using regex and keywords
-- An LLM-based extractor using the OpenAI Responses API with structured JSON output
+- An LLM-based extractor using Groq's OpenAI-compatible Responses API with structured JSON output
 - A small synthetic evaluation set with realistic rental application variations
 - A simple evaluation script that compares baseline and LLM performance
 
@@ -92,7 +92,7 @@ python3 evaluate.py --mode baseline
 Baseline + LLM:
 
 ```bash
-export OPENAI_API_KEY=your_key_here
+export GROQ_API_KEY=your_key_here
 python3 evaluate.py --mode both
 ```
 
@@ -103,24 +103,24 @@ The evaluation writes:
 
 ### Current checked result
 
-I was able to run the baseline locally in this repository. On the 12-case synthetic set, the baseline produced:
+I ran both the baseline and the LLM workflow on the 12-case synthetic evaluation set. The results were:
 
-- field accuracy: `0.806`
-- missing-field accuracy: `0.789`
-- full-case completion accuracy: `0.333`
+- Baseline field accuracy: `0.806`
+- Baseline missing-field accuracy: `0.789`
+- Baseline full-case completion accuracy: `0.333`
+- Baseline triage success rate: `0.583`
+- LLM field accuracy: `0.722`
+- LLM missing-field accuracy: `0.944`
+- LLM full-case completion accuracy: `0.000`
+- LLM triage success rate: `0.333`
 
-I could not run the OpenAI comparison inside this environment because `OPENAI_API_KEY` was not configured. The LLM evaluation path is implemented and can be run immediately once a key is added.
+I added `triage_success_rate` as a more workflow-aligned metric. A case counts as a triage success when field accuracy is at least `0.70` and missing-field accuracy is at least `0.80`. This reflects the intended use case better than exact full-case match, because the tool is meant to support first-pass review rather than fully automate downstream decisions.
 
 ## What Worked
 
-The baseline works reasonably well on clean, explicit cases. The overall workflow is still useful because it exposes how much rental screening depends on reading messy human language.
+The rule-based baseline performed better on exact field extraction and on overall triage success in this small evaluation. That makes sense because many of the examples still contained obvious patterns that regex and keyword rules could capture reliably.
 
-The LLM design is expected to do better than the baseline on:
-
-- paraphrased income descriptions
-- natural move-in date phrasing
-- soft or indirect guarantor mentions
-- multi-applicant summaries
+The LLM workflow was most useful for detecting incomplete applications. Its missing-field accuracy was significantly higher than the baseline, which suggests that GenAI adds value when the task is not only extraction, but also recognizing what information still needs human follow-up.
 
 ## What Failed and Where Humans Must Stay Involved
 
@@ -130,6 +130,7 @@ This tool has clear failure modes:
 - multiple applicants can blur names, employers, and occupant counts
 - vague timing like "late June" is not precise enough for downstream systems
 - models may over-infer if prompting is weak
+- exact-match evaluation can penalize outputs that are directionally useful but phrased differently
 
 Because of that, a human should stay involved for:
 
@@ -138,7 +139,7 @@ Because of that, a human should stay involved for:
 - guarantor verification
 - conflict resolution when the text is incomplete or ambiguous
 
-The right use case is first-pass extraction and triage, not autonomous approval.
+The right use case is first-pass extraction and missing-information triage, not autonomous approval.
 
 ## How to Run the App
 
@@ -151,7 +152,7 @@ pip install -r requirements.txt
 Set your API key:
 
 ```bash
-export OPENAI_API_KEY=your_key_here
+export GROQ_API_KEY=your_key_here
 ```
 
 Run the app:
