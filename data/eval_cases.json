@@ -1,0 +1,206 @@
+[
+  {
+    "id": "case_01",
+    "difficulty": "easy",
+    "input": "Hello, my name is Maya Patel. I work at Northwell Health and make $4,800 per month. It would just be me and one small dog. I want to move in on June 28, 2026. Email: maya.patel@example.com. Phone: 917-555-0184.",
+    "expected": {
+      "applicant_name": "Maya Patel",
+      "email": "maya.patel@example.com",
+      "phone": "917-555-0184",
+      "monthly_income": "$4,800 per month",
+      "employer": "Northwell Health",
+      "desired_move_in_date": "June 28, 2026",
+      "occupants": "1",
+      "pets": "one small dog",
+      "guarantor": "unknown",
+      "missing_fields": ["guarantor"]
+    }
+  },
+  {
+    "id": "case_02",
+    "difficulty": "easy",
+    "input": "This is Jordan Lee. My partner and I are interested in the 2-bedroom listing. I am employed by Metro Design and together we make $9,400/month. We'd like to start the lease on August 1, 2026. Email jordanl@email.com. No pets. My father can be our guarantor.",
+    "expected": {
+      "applicant_name": "Jordan Lee",
+      "email": "jordanl@email.com",
+      "phone": "unknown",
+      "monthly_income": "$9,400/month",
+      "employer": "Metro Design",
+      "desired_move_in_date": "August 1, 2026",
+      "occupants": "2",
+      "pets": "no pets",
+      "guarantor": "father can be guarantor",
+      "missing_fields": ["phone"]
+    }
+  },
+  {
+    "id": "case_03",
+    "difficulty": "medium",
+    "input": "Hi, I'm Sofia Ramos, a graduate student relocating in early September. I don't have full-time income yet, so my aunt would co-sign. Please email me at sofia.ramos@uni.edu.",
+    "expected": {
+      "applicant_name": "Sofia Ramos",
+      "email": "sofia.ramos@uni.edu",
+      "phone": "unknown",
+      "monthly_income": "unknown",
+      "employer": "unknown",
+      "desired_move_in_date": "early September",
+      "occupants": "1",
+      "pets": "unknown",
+      "guarantor": "aunt would co-sign",
+      "missing_fields": ["phone", "monthly_income", "employer", "pets"]
+    }
+  },
+  {
+    "id": "case_04",
+    "difficulty": "medium",
+    "input": "My name is Devin Brooks. I'm self-employed and usually bring in around $5.2k a month before tax. Just me. Planning to move in mid-July. No pets, no guarantor. Reach me at 646-555-0172.",
+    "expected": {
+      "applicant_name": "Devin Brooks",
+      "email": "unknown",
+      "phone": "646-555-0172",
+      "monthly_income": "$5.2k a month",
+      "employer": "self-employed",
+      "desired_move_in_date": "mid-July",
+      "occupants": "1",
+      "pets": "no pets",
+      "guarantor": "none",
+      "missing_fields": ["email"]
+    }
+  },
+  {
+    "id": "case_05",
+    "difficulty": "hard",
+    "input": "Hi leasing team, Ana and Chris here. We both work remotely; I am with Brightline and Chris is with a startup. Combined income is about $11,000 monthly. We'd need parking and have one cat. Looking to move sometime near the end of June. Contact: ana.chris.househunt@gmail.com.",
+    "expected": {
+      "applicant_name": "Ana and Chris",
+      "email": "ana.chris.househunt@gmail.com",
+      "phone": "unknown",
+      "monthly_income": "$11,000 monthly",
+      "employer": "Brightline and startup",
+      "desired_move_in_date": "end of June",
+      "occupants": "2",
+      "pets": "one cat",
+      "guarantor": "unknown",
+      "missing_fields": ["phone", "guarantor"]
+    }
+  },
+  {
+    "id": "case_06",
+    "difficulty": "easy",
+    "input": "I am Lewis Chen. Currently employed by Harbor Labs. Salary is $6,100 per month. Lease start September 3, 2026. No pets. Phone 212-555-0101 and email lewisc@harborlabs.com.",
+    "expected": {
+      "applicant_name": "Lewis Chen",
+      "email": "lewisc@harborlabs.com",
+      "phone": "212-555-0101",
+      "monthly_income": "$6,100 per month",
+      "employer": "Harbor Labs",
+      "desired_move_in_date": "September 3, 2026",
+      "occupants": "unknown",
+      "pets": "no pets",
+      "guarantor": "unknown",
+      "missing_fields": ["occupants", "guarantor"]
+    }
+  },
+  {
+    "id": "case_07",
+    "difficulty": "hard",
+    "input": "Hello, I'm Rachel Kim. I accepted a new role with Beacon Media and expect to earn about 58k annually. I would move from Chicago around July 10. It's only me. I do have a 20-pound rescue dog. Email rachel.kim88@mail.com.",
+    "expected": {
+      "applicant_name": "Rachel Kim",
+      "email": "rachel.kim88@mail.com",
+      "phone": "unknown",
+      "monthly_income": "58k annually",
+      "employer": "Beacon Media",
+      "desired_move_in_date": "July 10",
+      "occupants": "1",
+      "pets": "dog",
+      "guarantor": "unknown",
+      "missing_fields": ["phone", "guarantor"]
+    }
+  },
+  {
+    "id": "case_08",
+    "difficulty": "medium",
+    "input": "This is Omar Haddad. My roommate and I are looking for a September move-in. We have no pets. My monthly income is $3,900 and his is similar. Call me at 718-555-0198.",
+    "expected": {
+      "applicant_name": "Omar Haddad",
+      "email": "unknown",
+      "phone": "718-555-0198",
+      "monthly_income": "$3,900",
+      "employer": "unknown",
+      "desired_move_in_date": "September",
+      "occupants": "2",
+      "pets": "no pets",
+      "guarantor": "unknown",
+      "missing_fields": ["email", "employer", "guarantor"]
+    }
+  },
+  {
+    "id": "case_09",
+    "difficulty": "hard",
+    "input": "Good afternoon. My name is Priya Shah and I freelance full time. I usually invoice between $4,000 and $6,000 each month depending on the season. Hoping to move in late May. No pets. I can provide a guarantor if absolutely required. priya.shah@email.com",
+    "expected": {
+      "applicant_name": "Priya Shah",
+      "email": "priya.shah@email.com",
+      "phone": "unknown",
+      "monthly_income": "$4,000 and $6,000 each month",
+      "employer": "freelance",
+      "desired_move_in_date": "late May",
+      "occupants": "unknown",
+      "pets": "no pets",
+      "guarantor": "can provide a guarantor if required",
+      "missing_fields": ["phone", "occupants"]
+    }
+  },
+  {
+    "id": "case_10",
+    "difficulty": "medium",
+    "input": "Hi, this is Elena Ortiz. I work at Boston Children's Hospital. I make $7,250 monthly and want to move in on October 1. My sister may stay with me occasionally, but I would be the only tenant. No pets. Phone is (617) 555-0142.",
+    "expected": {
+      "applicant_name": "Elena Ortiz",
+      "email": "unknown",
+      "phone": "(617) 555-0142",
+      "monthly_income": "$7,250 monthly",
+      "employer": "Boston Children's Hospital",
+      "desired_move_in_date": "October 1",
+      "occupants": "1",
+      "pets": "no pets",
+      "guarantor": "unknown",
+      "missing_fields": ["email", "guarantor"]
+    }
+  },
+  {
+    "id": "case_11",
+    "difficulty": "hard",
+    "input": "Hello, we are Malik Johnson and Theo Price. Theo is starting at City Transit next month and I work at a law office. Our total income should be around $8,800/month. We have two cats and need to move as soon as possible, ideally by June 15. Email malik.theo.apts@pm.me and phone 347-555-0125.",
+    "expected": {
+      "applicant_name": "Malik Johnson and Theo Price",
+      "email": "malik.theo.apts@pm.me",
+      "phone": "347-555-0125",
+      "monthly_income": "$8,800/month",
+      "employer": "City Transit and law office",
+      "desired_move_in_date": "June 15",
+      "occupants": "2",
+      "pets": "two cats",
+      "guarantor": "unknown",
+      "missing_fields": ["guarantor"]
+    }
+  },
+  {
+    "id": "case_12",
+    "difficulty": "easy",
+    "input": "This is Nia Walker. Employed by Green Point Dental. Monthly income $5,400. I have no pets and no guarantor. Just me. Move in date would be November 2, 2026. Contact niaw@greenmail.com.",
+    "expected": {
+      "applicant_name": "Nia Walker",
+      "email": "niaw@greenmail.com",
+      "phone": "unknown",
+      "monthly_income": "$5,400",
+      "employer": "Green Point Dental",
+      "desired_move_in_date": "November 2, 2026",
+      "occupants": "1",
+      "pets": "no pets",
+      "guarantor": "none",
+      "missing_fields": ["phone"]
+    }
+  }
+]

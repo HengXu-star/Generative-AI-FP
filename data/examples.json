@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Informal email with pet",
+    "input": "Hi, my name is Maya Patel and I'm interested in the one-bedroom on Oak Street. I work at Northwell Health and bring home about $4,800 per month. It's just me and my mini dachshund. Hoping to move in late June. You can reach me at maya.patel@example.com or 917-555-0184."
+  },
+  {
+    "title": "Two applicants and a guarantor",
+    "input": "Hello, this is Jordan Lee. My partner and I are applying together for the 2 bed listing. I am employed by Metro Design, and together we earn around $9,400/month. We'd like to start the lease on August 1, 2026. My email is jordanl@email.com. We have no pets. My father can act as guarantor if needed."
+  },
+  {
+    "title": "Sparse student applicant",
+    "input": "Hi there, I'm Sofia Ramos. I'm a grad student moving to Boston in September and I may need a co-signer. Please let me know what docs you need. Email: sofia.ramos@uni.edu"
+  }
+]
